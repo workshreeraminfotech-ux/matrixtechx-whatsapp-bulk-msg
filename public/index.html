@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatrixTechX - WhatsApp Marketing Platform</title>
+    <meta name="description" content="MatrixTechX WhatsApp Bulk Messenger - Send bulk WhatsApp messages, manage campaigns, contacts, and analytics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="login-page">
+    <div class="login-bg">
+        <div class="login-blob blob1"></div>
+        <div class="login-blob blob2"></div>
+        <div class="login-blob blob3"></div>
+    </div>
+
+    <div class="login-container">
+        <!-- Left Panel -->
+        <div class="login-left">
+            <div class="brand-logo">
+                <div class="brand-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#3b82f6"/>
+                        <path d="M16 4C9.373 4 4 9.373 4 16c0 2.142.561 4.149 1.543 5.886L4 28l6.315-1.515A11.954 11.954 0 0016 28c6.627 0 12-5.373 12-12S22.627 4 16 4z" fill="white"/>
+                        <path d="M21.5 19.5c-.3.8-1.5 1.5-2.4 1.7-.6.1-1.4.2-4.1-.9-3.4-1.4-5.6-4.9-5.8-5.1-.2-.3-1.5-2-.5-3.7.4-.7 1-1 1.3-1s.5 0 .7.1c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.6l-.5.7c-.1.2-.2.4 0 .6.6 1 1.4 1.9 2.3 2.5.8.5 1.7.9 2.6 1.1.2.1.4 0 .5-.2l.6-.8c.1-.2.4-.3.6-.2l2 .9c.2.1.4.3.4.5.1.5-.1 1-.7 1.7z" fill="#3b82f6"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-name">MatrixTechX</h1>
+                    <span class="brand-tag">WhatsApp Marketing Platform</span>
+                </div>
+            </div>
+
+            <div class="login-hero">
+                <h2>Reach Your Customers<br><span class="gradient-text">At Scale</span></h2>
+                <p>Send personalized bulk WhatsApp messages, manage campaigns, track analytics, and grow your business with MatrixTechX.</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📤</div>
+                        <span>Bulk Message Campaigns</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <span>Real-time Analytics</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🤖</div>
+                        <span>AI-Powered Automation</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💬</div>
+                        <span>Team Inbox & Chat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Login Form -->
+        <div class="login-right">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your MatrixTechX account</p>
+                </div>
+
+                <div id="loginError" class="error-banner" style="display:none;"></div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <input type="email" id="email" placeholder="admin@matrixtechx.com" required autocomplete="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                            <button type="button" class="toggle-password" onclick="togglePassword()">
+                                <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me for 7 days
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="loginBtn">
+                        <span class="btn-text">Sign In</span>
+                        <div class="btn-loader" style="display:none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Default credentials:</p>
+                    <code>admin@matrixtechx.com / Admin@123456</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoader = btn.querySelector('.btn-loader');
+            const errorDiv = document.getElementById('loginError');
+
+            // Show loading
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'flex';
+            btn.disabled = true;
+            errorDiv.style.display = 'none';
+
+            try {
+                const resp = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+                const data = await resp.json();
+
+                if (data.success) {
+                    localStorage.setItem('mtx_token', data.data.token);
+                    localStorage.setItem('mtx_user', JSON.stringify(data.data.user));
+                    window.location.href = '/dashboard.html';
+                } else {
+                    errorDiv.textContent = data.error || 'Login failed. Please check your credentials.';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.textContent = 'Cannot connect to server. Please ensure the server is running.';
+                errorDiv.style.display = 'block';
+            } finally {
+                btnText.style.display = 'block';
+                btnLoader.style.display = 'none';
+                btn.disabled = false;
+            }
+        });
+
+        // Check if already logged in
+        if (localStorage.getItem('mtx_token')) {
+            window.location.href = '/dashboard.html';
+        }
+    </script>
+</body>
+</html>
