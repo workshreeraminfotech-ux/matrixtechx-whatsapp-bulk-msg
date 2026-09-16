@@ -7,11 +7,14 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
-let Database;
-try {
-    Database = require('better-sqlite3');
-} catch (e) {
-    console.warn('⚠️ Native better-sqlite3 not available in this environment, using serverless fallback store:', e.message);
+let Database = null;
+if (!process.env.VERCEL) {
+    try {
+        const pkg = 'better-' + 'sqlite3';
+        Database = require(pkg);
+    } catch (e) {
+        console.warn('⚠️ Native better-sqlite3 not available, using fallback store');
+    }
 }
 
 // In-Memory / File Storage Fallback for Serverless environments (like Vercel)
