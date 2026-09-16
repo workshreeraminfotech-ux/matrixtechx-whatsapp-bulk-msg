@@ -10,8 +10,8 @@ function authenticateToken(req, res, next) {
         return res.status(401).json({ success: false, error: 'Access token required' });
     }
 
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const secret = process.env.JWT_SECRET || 'matrixtechx_super_secret_jwt_key_2024';
+        const decoded = jwt.verify(token, secret);
         const db = getDB();
         const user = db.prepare('SELECT * FROM users WHERE id = ? AND is_active = 1').get(decoded.userId);
 

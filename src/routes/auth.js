@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
 
     const token = jwt.sign(
         { userId: user.id, email: user.email, role: user.role },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET || 'matrixtechx_super_secret_jwt_key_2024',
         { expiresIn: '7d' }
     );
 
