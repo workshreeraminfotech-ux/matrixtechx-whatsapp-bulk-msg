@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatrixTechX - Dashboard</title>
+    <meta name="description" content="MatrixTechX WhatsApp Marketing Platform Dashboard">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/pages.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- App Shell -->
+<div class="app-shell">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Brand -->
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">
+                <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 4C9.373 4 4 9.373 4 16c0 2.142.561 4.149 1.543 5.886L4 28l6.315-1.515A11.954 11.954 0 0016 28c6.627 0 12-5.373 12-12S22.627 4 16 4z" fill="white"/>
+                    <path d="M21.5 19.5c-.3.8-1.5 1.5-2.4 1.7-.6.1-1.4.2-4.1-.9-3.4-1.4-5.6-4.9-5.8-5.1-.2-.3-1.5-2-.5-3.7.4-.7 1-1 1.3-1s.5 0 .7.1c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.6l-.5.7c-.1.2-.2.4 0 .6.6 1 1.4 1.9 2.3 2.5.8.5 1.7.9 2.6 1.1.2.1.4 0 .5-.2l.6-.8c.1-.2.4-.3.6-.2l2 .9c.2.1.4.3.4.5.1.5-.1 1-.7 1.7z" fill="#1d4ed8"/>
+                </svg>
+            </div>
+            <div>
+                <div class="sidebar-brand-name">MatrixTechX</div>
+                <div class="sidebar-brand-tag">WhatsApp Platform</div>
+            </div>
+        </div>
+
+        <!-- Channel Selector -->
+        <div class="sidebar-channel" id="channelSelector">
+            <div class="channel-dot"></div>
+            <span class="channel-name" id="channelName">Main Channel</span>
+            <svg class="channel-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-item active" data-page="dashboard">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span class="nav-label">Dashboard</span>
+                </div>
+                <div class="nav-item" data-page="inbox">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="nav-label">Team Inbox</span>
+                    <span class="nav-badge" id="inboxBadge" style="display:none">0</span>
+                </div>
+                <div class="nav-item" data-page="contacts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span class="nav-label">Contacts</span>
+                </div>
+                <div class="nav-item" data-page="groups">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span class="nav-label">Groups</span>
+                </div>
+                <div class="nav-item" data-page="campaigns">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 22-7z"/></svg>
+                    <span class="nav-label">Campaigns</span>
+                </div>
+                <div class="nav-item" data-page="templates">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span class="nav-label">Templates</span>
+                </div>
+                <div class="nav-item" data-page="automations">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <span class="nav-label">Automations</span>
+                </div>
+                <div class="nav-item" data-page="analytics">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <span class="nav-label">Analytics</span>
+                </div>
+                <div class="nav-item" data-page="widget">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                    <span class="nav-label">Widget Builder</span>
+                </div>
+                <div class="nav-item" data-page="api-docs">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <span class="nav-label">API Docs</span>
+                </div>
+            </div>
+
+            <!-- E-Commerce -->
+            <div class="nav-section">
+                <div class="nav-section-title">E-Commerce</div>
+                <div class="nav-item" data-page="stores">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="nav-label">Stores</span>
+                </div>
+                <div class="nav-item" data-page="abandoned-carts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav-label">Abandoned Carts</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- AI Assistant -->
+        <div class="sidebar-ai">
+            <div class="ai-card">
+                <div class="ai-icon">🤖</div>
+                <div class="ai-info">
+                    <div class="ai-label">AI Assistant</div>
+                    <div class="ai-status" id="aiStatus">● Inactive</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" id="aiToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="sidebar-user" data-page="settings">
+            <div class="avatar" id="sidebarAvatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">A</div>
+            <div class="user-info">
+                <div class="user-name" id="sidebarUserName">Admin</div>
+                <div class="user-role" id="sidebarUserRole">Admin</div>
+            </div>
+            <button class="user-settings" title="Settings">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <!-- TopBar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="lang-selector">
+                    🌐 EN <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-btn" title="Support">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </button>
+                <button class="topbar-btn" title="Messages">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </button>
+                <button class="topbar-btn" title="Notifications" id="notifBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <span class="topbar-notif-count" id="notifCount">0</span>
+                </button>
+                <div class="topbar-avatar" id="topbarAvatar" title="Profile">A</div>
+            </div>
+        </header>
+
+        <!-- ===== PAGE VIEWS ===== -->
+        <div class="page-content" id="pageContent">
+
+            <!-- DASHBOARD PAGE -->
+            <div id="page-dashboard" class="page-view">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Dashboard Overview</h1>
+                        <p class="page-subtitle">Welcome back! Here's what's happening with your WhatsApp business.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('createCampaignModal')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        New Campaign
+                    </button>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid" id="dashboardStats">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(59,130,246,0.15)">👥</div>
+                        <div class="stat-value" id="stat-contacts">-</div>
+                        <div class="stat-label">Total Contacts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(16,185,129,0.15)">📤</div>
+                        <div class="stat-value" id="stat-sent">-</div>
+                        <div class="stat-label">Messages Sent</div>
+                        <div class="stat-sub" id="stat-delivered-sub"></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(139,92,246,0.15)">✅</div>
+                        <div class="stat-value" id="stat-delivered">-</div>
+                        <div class="stat-label">Delivered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(245,158,11,0.15)">👁️</div>
+                        <div class="stat-value" id="stat-read">-</div>
+                        <div class="stat-label">Read</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(239,68,68,0.15)">❌</div>
+                        <div class="stat-value" id="stat-failed" style="color:var(--red)">-</div>
+                        <div class="stat-label">Failed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(59,130,246,0.15)">📣</div>
+                        <div class="stat-value" id="stat-campaigns">-</div>
+                        <div class="stat-label">Total Campaigns</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(16,185,129,0.15)">📝</div>
+                        <div class="stat-value" id="stat-templates">-</div>
+                        <div class="stat-label">Templates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:rgba(245,158,11,0.15)">📅</div>
+                        <div class="stat-value" id="stat-today">-</div>
+                        <div class="stat-label">Today's Campaigns</div>
+                    </div>
+                </div>
+
+                <!-- Rate Cards -->
+                <div class="stats-grid-3 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">📊 Delivery Rate</span>
+                            <span id="deliveryRateVal" style="font-size:24px;font-weight:800;color:var(--green)">0%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill green" id="deliveryRateBar" style="width:0%"></div></div>
+                        <div class="stat-sub mt-4" id="deliveryRateDesc">-</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">👁️ Read Rate</span>
+                            <span id="readRateVal" style="font-size:24px;font-weight:800;color:var(--purple)">0%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill purple" id="readRateBar" style="width:0%"></div></div>
+                        <div class="stat-sub mt-4" id="readRateDesc">-</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">📈 Monthly Growth</span>
+                            <span id="monthlyGrowthVal" style="font-size:24px;font-weight:800;color:var(--accent)">-</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="monthlyGrowthBar" style="width:0%"></div></div>
+                        <div class="stat-sub mt-4" id="monthlyGrowthDesc">-</div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">📊 Contact Growth</span>
+                            <span class="text-sm text-muted">Last 30 days</span>
+                        </div>
+                        <canvas id="contactGrowthChart" height="160"></canvas>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">📣 Campaign Overview</span>
+                            <span class="text-sm text-muted">Message status</span>
+                        </div>
+                        <canvas id="campaignChart" height="160"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAMPAIGNS PAGE -->
+            <div id="page-campaigns" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Campaigns</h1>
+                        <p class="page-subtitle">Create and manage your WhatsApp marketing campaigns</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('createCampaignModal')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Create Campaign
+                    </button>
+                </div>
+
+                <!-- Campaign Stats -->
+                <div class="stats-grid mb-4" id="campaignStatsRow">
+                    <div class="stat-card"><div class="stat-value" id="cs-total">0</div><div class="stat-label">Total Campaigns</div></div>
+                    <div class="stat-card"><div class="stat-value" id="cs-recipients">0</div><div class="stat-label">Total Recipients</div></div>
+                    <div class="stat-card"><div class="stat-value" id="cs-delivery" style="color:var(--green)">0%</div><div class="stat-label">Delivery Rate</div></div>
+                    <div class="stat-card"><div class="stat-value" id="cs-failed" style="color:var(--red)">0</div><div class="stat-label">Failed Messages</div></div>
+                </div>
+
+                <div class="card" style="padding:0;">
+                    <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)">
+                        <h3>All Campaigns</h3>
+                        <div class="search-wrapper">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="text" class="search-input" placeholder="Search campaigns..." id="campaignSearch" oninput="filterCampaigns(this.value)">
+                        </div>
+                    </div>
+                    <div class="table-wrapper" style="border:none;border-radius:0">
+                        <table>
+                            <thead><tr>
+                                <th>Campaign</th><th>Created By</th><th>Status</th><th>Template</th>
+                                <th>Recipients</th><th>Sent</th><th>Delivered</th><th>Read</th>
+                                <th>Delivery Rate</th><th>Created</th><th>Actions</th>
+                            </tr></thead>
+                            <tbody id="campaignsTable"><tr><td colspan="11" class="table-empty">Loading...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEMPLATES PAGE -->
+            <div id="page-templates" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Message Templates</h1>
+                        <p class="page-subtitle">Manage your WhatsApp message templates</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-secondary" onclick="syncTemplates()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                            Sync from WhatsApp
+                        </button>
+                        <button class="btn btn-primary" onclick="openModal('createTemplateModal')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Create Template
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                    <div class="search-wrapper">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" class="search-input" placeholder="Search templates..." id="templateSearch" oninput="filterTemplates(this.value)">
+                    </div>
+                    <select class="form-control" style="width:150px" id="templateCategoryFilter" onchange="filterTemplates()">
+                        <option value="">All Categories</option>
+                        <option value="MARKETING">Marketing</option>
+                        <option value="UTILITY">Utility</option>
+                        <option value="AUTHENTICATION">Authentication</option>
+                    </select>
+                </div>
+
+                <div id="templatesGrid" class="templates-grid">
+                    <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Loading templates...</div>
+                </div>
+            </div>
+
+            <!-- CONTACTS PAGE -->
+            <div id="page-contacts" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Contacts Management</h1>
+                        <p class="page-subtitle">Manage your WhatsApp contacts and groups</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('addContactModal')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add New Contact
+                    </button>
+                </div>
+
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
+                    <div class="search-wrapper">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" class="search-input" placeholder="Search contacts..." id="contactSearch" oninput="filterContacts(this.value)">
+                    </div>
+                    <select class="form-control" style="width:140px" id="contactGroupFilter">
+                        <option value="">All Groups</option>
+                    </select>
+                    <select class="form-control" style="width:140px" id="contactStatusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="ACTIVE">Active</option>
+                        <option value="BLOCKED">Blocked</option>
+                    </select>
+                    <div style="flex:1"></div>
+                    <button class="btn btn-secondary btn-sm" onclick="exportContacts()">📤 Export</button>
+                    <button class="btn btn-secondary btn-sm" onclick="openModal('importContactsModal')">📥 Import</button>
+                    <button class="btn btn-secondary btn-sm" onclick="downloadSampleExcel()">📋 Sample Excel</button>
+                </div>
+
+                <div class="card" style="padding:0;">
+                    <div class="table-wrapper" style="border:none">
+                        <table>
+                            <thead><tr>
+                                <th><input type="checkbox" id="selectAllContacts" onchange="toggleSelectAll(this)"></th>
+                                <th>Contact</th><th>Phone</th><th>Groups</th>
+                                <th>Status</th><th>Source</th><th>Last Contact</th><th>Actions</th>
+                            </tr></thead>
+                            <tbody id="contactsTable"><tr><td colspan="8" class="table-empty">Loading...</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div style="padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)">
+                        <span class="text-sm text-muted" id="contactsPagination"></span>
+                        <div class="flex gap-2" id="contactsPages"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GROUPS PAGE -->
+            <div id="page-groups" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Groups</h1>
+                        <p class="page-subtitle">Organize your contacts into groups for targeted campaigns</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('createGroupModal')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Create Group
+                    </button>
+                </div>
+                <div id="groupsGrid" class="groups-grid">
+                    <div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--text-muted)">Loading groups...</div>
+                </div>
+            </div>
+
+            <!-- INBOX PAGE -->
+            <div id="page-inbox" class="page-view hidden" style="padding:0;height:calc(100vh - 58px);">
+                <div class="inbox-shell">
+                    <!-- Left Panel -->
+                    <div class="inbox-list">
+                        <div class="inbox-list-header">
+                            <h3>Team Inbox</h3>
+                            <div class="inbox-tabs">
+                                <button class="inbox-tab active" onclick="switchInboxTab('all',this)">All</button>
+                                <button class="inbox-tab" onclick="switchInboxTab('wa',this)">WA</button>
+                                <button class="inbox-tab" onclick="switchInboxTab('assigned',this)">Assigned</button>
+                                <button class="inbox-tab" onclick="switchInboxTab('unread',this)">Unread</button>
+                            </div>
+                        </div>
+                        <div class="inbox-search">
+                            <div class="search-wrapper" style="width:100%">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                <input type="text" class="search-input" style="width:100%" placeholder="Search conversations..." id="inboxSearch">
+                            </div>
+                        </div>
+                        <div id="conversationsList" class="conversations-list">
+                            <div class="empty-state" style="padding:40px 20px">
+                                <div class="empty-icon">💬</div>
+                                <p class="empty-desc">No conversations yet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Panel -->
+                    <div class="inbox-chat" id="inboxChat">
+                        <div class="empty-state" style="height:100%">
+                            <div class="empty-icon">💬</div>
+                            <h3 class="empty-title">Select a conversation</h3>
+                            <p class="empty-desc">Choose a conversation from the list to start messaging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYTICS PAGE -->
+            <div id="page-analytics" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Analytics</h1>
+                        <p class="page-subtitle">Track your WhatsApp marketing performance</p>
+                    </div>
+                    <select class="form-control" style="width:140px" id="analyticsDays" onchange="loadAnalytics()">
+                        <option value="7">Last 7 days</option>
+                        <option value="30" selected>Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                    </select>
+                </div>
+                <div class="stats-grid mb-4">
+                    <div class="stat-card"><div class="stat-value" id="an-sent">0</div><div class="stat-label">Total Sent</div></div>
+                    <div class="stat-card"><div class="stat-value" id="an-delivered" style="color:var(--green)">0</div><div class="stat-label">Delivered</div></div>
+                    <div class="stat-card"><div class="stat-value" id="an-read" style="color:var(--purple)">0</div><div class="stat-label">Read</div></div>
+                    <div class="stat-card"><div class="stat-value" id="an-failed" style="color:var(--red)">0</div><div class="stat-label">Failed</div></div>
+                </div>
+                <div class="content-grid">
+                    <div class="card" style="grid-column:1/-1">
+                        <div class="card-header"><span class="card-title">Campaign Performance Over Time</span></div>
+                        <canvas id="analyticsChart" height="100"></canvas>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Message Status Breakdown</span></div>
+                        <canvas id="statusPieChart" height="200"></canvas>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Contact Growth</span></div>
+                        <canvas id="analyticsContactChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS PAGE -->
+            <div id="page-settings" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-subtitle">Configure your application settings and preferences</p>
+                    </div>
+                </div>
+                <div class="settings-tabs">
+                    <button class="settings-tab active" onclick="switchSettingsTab('whatsapp',this)">📱 WhatsApp</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('team',this)">👥 Team</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('notifications',this)">🔔 Notifications</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('apikeys',this)">🔑 API Keys</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('billing',this)">💳 Billing</button>
+                </div>
+                <div id="settingsContent" style="margin-top:24px"></div>
+            </div>
+
+            <!-- WIDGET BUILDER PAGE -->
+            <div id="page-widget" class="page-view hidden">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Widget Builder</h1>
+                        <p class="page-subtitle">Create and customize your WhatsApp chat widget</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveWidgetConfig()">💾 Save Configuration</button>
+                </div>
+                <div class="widget-builder-grid">
+                    <div class="widget-builder-left">
+                        <div class="settings-tabs" style="margin-bottom:20px">
+                            <button class="settings-tab active" onclick="switchWidgetTab('content',this)">Content</button>
+                            <button class="settings-tab" onclick="switchWidgetTab('design',this)">Design</button>
+                        </div>
+                        <div id="widgetTabContent"></div>
+                    </div>
+                    <div class="widget-builder-right">
+                        <h3 style="margin-bottom:12px;color:var(--text-secondary)">Live Preview</h3>
+                        <div class="widget-preview-area">
+                            <div class="widget-preview" id="widgetPreview">
+                                <div class="wp-header" id="wpHeader">
+                                    <div class="wp-header-text">
+                                        <div class="wp-title" id="wpTitle">Welcome!</div>
+                                        <div class="wp-subtitle" id="wpSubtitle">How can we help?</div>
+                                    </div>
+                                    <button class="wp-close">✕</button>
+                                </div>
+                                <div class="wp-body">
+                                    <div class="wp-agents">
+                                        <div class="wp-agent-avatar" style="background:#3b82f6">M</div>
+                                        <div class="wp-agent-info">
+                                            <div class="wp-reply-time">Our usual reply time</div>
+                                            <div class="wp-reply-val">⏱ <span id="wpResponseTime">A few minutes</span></div>
+                                        </div>
+                                    </div>
+                                    <button class="wp-send-btn" id="wpSendBtn">💬 Send us a message</button>
+                                    <div class="wp-search">
+                                        <div class="wp-search-label">Find an answer quickly</div>
+                                        <div class="wp-search-input">🔍 Search our Help Center ›</div>
+                                    </div>
+                                </div>
+                                <div class="wp-footer">Powered by MatrixTechX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API DOCS PAGE -->
+            <div id="page-api-docs" class="page-view hidden">
+                <div class="page-header">
+                    <h1 class="page-title">API Documentation</h1>
+                </div>
+                <div style="display:grid;grid-template-columns:240px 1fr;gap:20px">
+                    <div class="card" style="height:fit-content;position:sticky;top:80px">
+                        <h4 style="margin-bottom:12px;color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:1px">Navigation</h4>
+                        <div style="display:flex;flex-direction:column;gap:4px">
+                            <a href="#api-auth" class="nav-item" style="margin:0;padding:7px 12px;font-size:12px">🔐 Authentication</a>
+                            <a href="#api-contacts" class="nav-item" style="margin:0;padding:7px 12px;font-size:12px">👥 Contacts</a>
+                            <a href="#api-campaigns" class="nav-item" style="margin:0;padding:7px 12px;font-size:12px">📣 Campaigns</a>
+                            <a href="#api-templates" class="nav-item" style="margin:0;padding:7px 12px;font-size:12px">📝 Templates</a>
+                            <a href="#api-webhook" class="nav-item" style="margin:0;padding:7px 12px;font-size:12px">🔗 Webhook</a>
+                        </div>
+                    </div>
+                    <div id="apiDocsContent"></div>
+                </div>
+            </div>
+
+            <!-- STORES PAGE -->
+            <div id="page-stores" class="page-view hidden">
+                <div class="page-header">
+                    <div><h1 class="page-title">Stores</h1><p class="page-subtitle">Manage connected ecommerce platforms</p></div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-secondary">🛍️ Shopify</button>
+                        <button class="btn btn-secondary">🛒 WooCommerce</button>
+                    </div>
+                </div>
+                <div class="stats-grid-3 mb-4">
+                    <div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Connected Stores</div></div>
+                    <div class="stat-card"><div class="stat-value" style="color:var(--green)">0</div><div class="stat-label">Active Connections</div></div>
+                    <div class="stat-card"><div class="stat-value" style="color:var(--yellow)">0</div><div class="stat-label">Needs Attention</div></div>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom:16px">Connect Shopify Store</h3>
+                    <p style="margin-bottom:16px;font-size:13px">Link a Shopify store to automate customer, order, and inventory synchronization.</p>
+                    <div class="flex gap-2">
+                        <input type="text" class="form-control" placeholder="https:// my-store.myshopify.com" style="max-width:500px">
+                        <button class="btn btn-primary">+ Connect Store</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABANDONED CARTS PAGE -->
+            <div id="page-abandoned-carts" class="page-view hidden">
+                <div class="page-header"><h1 class="page-title">Abandoned Carts</h1></div>
+                <div class="empty-state"><div class="empty-icon">🛒</div><h3 class="empty-title">No Abandoned Carts</h3><p class="empty-desc">Connect a store to track abandoned carts and send recovery messages.</p></div>
+            </div>
+
+            <!-- AUTOMATIONS PAGE -->
+            <div id="page-automations" class="page-view hidden">
+                <div class="page-header"><h1 class="page-title">Automations</h1></div>
+                <div class="empty-state"><div class="empty-icon">⚡</div><h3 class="empty-title">No Automations Yet</h3><p class="empty-desc">Create automated workflows to send messages based on triggers and conditions.</p><button class="btn btn-primary" style="margin-top:16px">+ Create Automation</button></div>
+            </div>
+
+        </div><!-- /page-content -->
+    </main>
+</div><!-- /app-shell -->
+
+<!-- ========== MODALS ========== -->
+
+<!-- Create Campaign Modal -->
+<div class="modal-overlay" id="createCampaignModal">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <div><div class="modal-title">Create Campaign</div><div class="modal-subtitle">Send bulk WhatsApp messages to your contacts</div></div>
+            <button class="modal-close" onclick="closeModal('createCampaignModal')">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Campaign Name *</label>
+                <input type="text" class="form-control" id="campaignName" placeholder="e.g. Summer Sale 2024">
+            </div>
+            <div class="form-group">
+                <label>Select Template *</label>
+                <select class="form-control" id="campaignTemplate">
+                    <option value="">-- Select a template --</option>
+                </select>
+            </div>
+            <div class="card" style="margin-bottom:16px">
+                <h4 style="margin-bottom:12px">⏰ Scheduling</h4>
+                <div class="form-group">
+                    <label>Schedule Campaign (Optional)</label>
+                    <input type="datetime-local" class="form-control" id="campaignSchedule">
+                </div>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" id="campaignAutoRetry">
+                    <span style="color:var(--accent);font-size:13px">Enable auto-retry for failed messages</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Audience</label>
+                <select class="form-control" id="campaignAudience" onchange="handleAudienceChange(this.value)">
+                    <option value="all">All Contacts</option>
+                    <option value="group">Filter by Group</option>
+                    <option value="selected">Select Contacts</option>
+                </select>
+            </div>
+            <div class="form-group hidden" id="groupFilterDiv">
+                <label>Select Group</label>
+                <select class="form-control" id="campaignGroup">
+                    <option value="">All Groups</option>
+                </select>
+            </div>
+            <div id="contactCheckboxes" class="hidden">
+                <label style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                    <span>Select Contacts</span>
+                    <label class="checkbox-wrapper"><input type="checkbox" id="selectAllCampaignContacts" onchange="toggleCampaignContacts(this)"> Select All (<span id="totalContactCount">0</span>)</label>
+                </label>
+                <div id="campaignContactList" style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px;background:var(--bg-secondary)"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal('createCampaignModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="createCampaign()">🚀 Start Campaign</button>
+        </div>
+    </div>
+</div>
+
+<!-- Create Template Modal -->
+<div class="modal-overlay" id="createTemplateModal">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <div><div class="modal-title">Create New Template</div><div class="modal-subtitle">Create WhatsApp message templates for marketing or utility purposes</div></div>
+            <button class="modal-close" onclick="closeModal('createTemplateModal')">✕</button>
+        </div>
+        <div class="modal-body" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div>
+                <h4 style="margin-bottom:16px;color:var(--text-muted)">Basic Information</h4>
+                <div class="form-group">
+                    <label>Template Name *</label>
+                    <input type="text" class="form-control" id="tplName" placeholder="welcome_message">
+                    <small style="color:var(--text-muted);font-size:11px">Use lowercase letters, numbers, and underscores only</small>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" id="tplCategory">
+                            <option value="MARKETING">Marketing</option>
+                            <option value="UTILITY">Utility</option>
+                            <option value="AUTHENTICATION">Authentication</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select class="form-control" id="tplLanguage">
+                            <option value="en_US">English (US)</option>
+                            <option value="hi">Hindi</option>
+                            <option value="gu">Gujarati</option>
+                            <option value="mr">Marathi</option>
+                        </select>
+                    </div>
+                </div>
+                <h4 style="margin-bottom:16px;margin-top:8px;color:var(--text-muted)">Template Content</h4>
+                <div class="form-group">
+                    <label>Header Type</label>
+                    <select class="form-control" id="tplHeaderType" onchange="updateTemplatePreview()">
+                        <option value="">None</option>
+                        <option value="TEXT">Text Header</option>
+                        <option value="IMAGE">Image</option>
+                        <option value="VIDEO">Video</option>
+                    </select>
+                </div>
+                <div class="form-group" id="tplHeaderContentDiv">
+                    <label>Header Content (Optional)</label>
+                    <input type="text" class="form-control" id="tplHeaderContent" placeholder="Optional header text, use {{1}} for variables" oninput="updateTemplatePreview()" maxlength="60">
+                </div>
+                <div class="form-group">
+                    <label>Body * <small style="color:var(--text-muted)">(use {{1}}, {{2}} for variables)</small></label>
+                    <textarea class="form-control" id="tplBody" rows="4" placeholder="Hello {{1}}, your order {{2}} has been confirmed!" oninput="updateTemplatePreview()"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Footer (Optional)</label>
+                    <input type="text" class="form-control" id="tplFooter" placeholder="MatrixTechX" oninput="updateTemplatePreview()">
+                </div>
+            </div>
+            <!-- Preview Panel -->
+            <div>
+                <h4 style="margin-bottom:16px;color:var(--text-muted)">📱 WhatsApp Preview</h4>
+                <div class="wa-phone-mock">
+                    <div class="wa-chat-bg">
+                        <div class="wa-msg-bubble" id="templatePreviewBubble">
+                            <div class="wa-msg-header" id="previewHeader" style="display:none"></div>
+                            <div class="wa-msg-body" id="previewBody">Template body will appear here...</div>
+                            <div class="wa-msg-footer" id="previewFooter" style="display:none"></div>
+                            <div class="wa-msg-time">12:00 PM ✓✓</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:16px;border-color:rgba(59,130,246,0.3)">
+                    <h4 style="color:var(--accent);margin-bottom:8px">📋 Template Guidelines</h4>
+                    <ul style="font-size:12px;color:var(--text-muted);padding-left:16px;line-height:1.8">
+                        <li>Template names must be unique and lowercase</li>
+                        <li>Variables are replaced with actual values when sending</li>
+                        <li>Templates must be approved by WhatsApp before use</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal('createTemplateModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="createTemplate()">📝 Create Template</button>
+        </div>
+    </div>
+</div>
+
+<!-- Add Contact Modal -->
+<div class="modal-overlay" id="addContactModal">
+    <div class="modal">
+        <div class="modal-header">
+            <div><div class="modal-title">Add New Contact</div><div class="modal-subtitle">Add a new WhatsApp contact to your list</div></div>
+            <button class="modal-close" onclick="closeModal('addContactModal')">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Name *</label>
+                <input type="text" class="form-control" id="contactName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="text" class="form-control" id="contactPhone" placeholder="+919876543210">
+                <small style="color:var(--text-muted);font-size:11px">WhatsApp phone number with country code</small>
+            </div>
+            <div class="form-group">
+                <label>Email (Optional)</label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="john@example.com">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal('addContactModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="addContact()">➕ Add Contact</button>
+        </div>
+    </div>
+</div>
+
+<!-- Import Contacts Modal -->
+<div class="modal-overlay" id="importContactsModal">
+    <div class="modal">
+        <div class="modal-header">
+            <div><div class="modal-title">Import Contacts</div><div class="modal-subtitle">Bulk import contacts from JSON</div></div>
+            <button class="modal-close" onclick="closeModal('importContactsModal')">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Paste JSON Data</label>
+                <textarea class="form-control" id="importJsonData" rows="8" placeholder='[{"name":"John","phone":"+919876543210","email":"john@example.com"}]'></textarea>
+            </div>
+            <small style="color:var(--text-muted);font-size:12px">Format: JSON array with name (required), phone (required), email (optional)</small>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal('importContactsModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="importContacts()">📥 Import Contacts</button>
+        </div>
+    </div>
+</div>
+
+<!-- Create Group Modal -->
+<div class="modal-overlay" id="createGroupModal">
+    <div class="modal">
+        <div class="modal-header">
+            <div><div class="modal-title">Create Group</div><div class="modal-subtitle">Create a new group to organize your contacts</div></div>
+            <button class="modal-close" onclick="closeModal('createGroupModal')">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Group Name *</label>
+                <input type="text" class="form-control" id="groupName" placeholder="e.g., VIP Customers">
+            </div>
+            <div class="form-group">
+                <label>Description (Optional)</label>
+                <textarea class="form-control" id="groupDesc" rows="3" placeholder="Add a description for this group (optional)"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal('createGroupModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="createGroup()">👥 Create Group</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<!-- Scripts -->
+<script src="/js/api.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/pages/dashboard.js"></script>
+<script src="/js/pages/campaigns.js"></script>
+<script src="/js/pages/templates.js"></script>
+<script src="/js/pages/contacts.js"></script>
+<script src="/js/pages/groups.js"></script>
+<script src="/js/pages/inbox.js"></script>
+<script src="/js/pages/analytics.js"></script>
+<script src="/js/pages/settings.js"></script>
+<script src="/js/pages/widget.js"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
-// Ensure local directories exist only when running locally (not in serverless read-only mode)
+// Ensure local directories exist only when running locally
 if (!process.env.VERCEL) {
     const dirs = [
         path.join(__dirname, 'database'),
@@ -47,7 +47,7 @@ app.use('/api/webhook', express.raw({ type: 'application/json' }), (req, res, ne
         try {
             req.body = JSON.parse(req.body.toString());
         } catch (e) {
-            // ignore parse error, let route handle it
+            // ignore parse error
         }
     }
     next();
@@ -56,8 +56,9 @@ app.use('/api/webhook', express.raw({ type: 'application/json' }), (req, res, ne
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (frontend)
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 // ===== API ROUTES =====
 app.use('/api/auth', require('./src/routes/auth'));
@@ -82,7 +83,10 @@ app.get('/api/health', (req, res) => {
 
 // Dashboard direct route
 app.get('/dashboard.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    const p = fs.existsSync(path.join(__dirname, 'dashboard.html')) 
+        ? path.join(__dirname, 'dashboard.html') 
+        : path.join(__dirname, 'public', 'dashboard.html');
+    res.sendFile(p);
 });
 
 // Catch-all: serve index.html for all non-API GET routes
@@ -91,7 +95,10 @@ app.use((req, res, next) => {
         return res.status(404).json({ success: false, error: 'API endpoint not found' });
     }
     if (req.method === 'GET') {
-        return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+        const p = fs.existsSync(path.join(__dirname, 'index.html')) 
+            ? path.join(__dirname, 'index.html') 
+            : path.join(__dirname, 'public', 'index.html');
+        return res.sendFile(p);
     }
     next();
 });
@@ -102,7 +109,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ success: false, error: err.message || 'Internal server error' });
 });
 
-// ===== START SERVER (Only if not running in serverless / Vercel) =====
+// ===== START SERVER =====
 if (!process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log('');
