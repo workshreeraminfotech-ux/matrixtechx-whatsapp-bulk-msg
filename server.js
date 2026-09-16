@@ -7,20 +7,32 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
-// Ensure directories exist
-const dirs = [
-    path.join(__dirname, 'database'),
-    path.join(__dirname, 'public'),
-    path.join(__dirname, 'uploads')
-];
-dirs.forEach(d => { if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true }); });
+// Ensure local directories exist only when running locally (not in serverless read-only mode)
+if (!process.env.VERCEL) {
+    const dirs = [
+        path.join(__dirname, 'database'),
+        path.join(__dirname, 'public'),
+        path.join(__dirname, 'uploads')
+    ];
+    dirs.forEach(d => {
+        try {
+            if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
+        } catch (e) {
+            console.warn('Directory check warning:', e.message);
+        }
+    });
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Initialize database
-const { initializeDatabase } = require('./src/database/db');
-initializeDatabase();
+// Initialize database safely
+try {
+    const { initializeDatabase } = require('./src/database/db');
+    initializeDatabase();
+} catch (e) {
+    console.error('Database setup notice:', e.message);
+}
 
 // ===== MIDDLEWARE =====
 app.use(cors({
@@ -68,34 +80,44 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Catch-all: serve frontend for all non-API routes
-app.get('/{*path}', (req, res) => {
+// Dashboard direct route
+app.get('/dashboard.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+// Catch-all: serve index.html for all non-API GET routes
+app.use((req, res, next) => {
     if (req.path.startsWith('/api')) {
         return res.status(404).json({ success: false, error: 'API endpoint not found' });
     }
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    if (req.method === 'GET') {
+        return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    }
+    next();
 });
 
 // ===== ERROR HANDLER =====
 app.use((err, req, res, next) => {
-    console.error('❌ Server Error:', err.stack);
+    console.error('❌ Server Error:', err.stack || err);
     res.status(500).json({ success: false, error: err.message || 'Internal server error' });
 });
 
-// ===== START SERVER =====
-app.listen(PORT, () => {
-    console.log('');
-    console.log('╔═══════════════════════════════════════════════╗');
-    console.log('║    🚀 MatrixTechX WhatsApp Platform            ║');
-    console.log('║    WhatsApp Bulk Messenger v1.0.0               ║');
-    console.log('╚═══════════════════════════════════════════════╝');
-    console.log('');
-    console.log(`✅ Server running at http://localhost:${PORT}`);
-    console.log(`📊 Dashboard: http://localhost:${PORT}`);
-    console.log(`🔗 Webhook URL: http://your-domain.com/api/webhook`);
-    console.log(`🔑 Admin: ${process.env.ADMIN_EMAIL || 'admin@matrixtechx.com'}`);
-    console.log(`🔐 Password: ${process.env.ADMIN_PASSWORD || 'Admin@123456'}`);
-    console.log('');
-});
+// ===== START SERVER (Only if not running in serverless / Vercel) =====
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log('');
+        console.log('╔═══════════════════════════════════════════════╗');
+        console.log('║    🚀 MatrixTechX WhatsApp Platform            ║');
+        console.log('║    WhatsApp Bulk Messenger v1.0.0               ║');
+        console.log('╚═══════════════════════════════════════════════╝');
+        console.log('');
+        console.log(`✅ Server running at http://localhost:${PORT}`);
+        console.log(`📊 Dashboard: http://localhost:${PORT}`);
+        console.log(`🔗 Webhook URL: http://your-domain.com/api/webhook`);
+        console.log(`🔑 Admin: ${process.env.ADMIN_EMAIL || 'admin@matrixtechx.com'}`);
+        console.log(`🔐 Password: ${process.env.ADMIN_PASSWORD || 'Admin@123456'}`);
+        console.log('');
+    });
+}
 
 module.exports = app;
